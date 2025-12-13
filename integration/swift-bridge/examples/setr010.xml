@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:setr.010.001.04" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SctiesTradConf>
+    <MsgId>
+      <Id>SETR-20240315-001234</Id>
+      <CreDtTm>2024-03-15T10:30:00Z</CreDtTm>
+    </MsgId>
+    <TradLegId>
+      <LegId>LEG-001</LegId>
+      <TradDt>2024-03-15</TradDt>
+      <SttlmDt>2024-03-17</SttlmDt>
+    </TradLegId>
+    <FinInstrmId>
+      <ISIN>US46434G1031</ISIN>
+      <LEI>549300PZDW6EBUUJ8G35</LEI>
+      <Nm>ERC8040 Sustainable Energy Bond</Nm>
+      <ClssfctnTp>
+        <ClssfctnFinInstrm>Green Bond</ClssfctnFinInstrm>
+      </ClssfctnTp>
+    </FinInstrmId>
+    <ESGClssfctn>
+      <TaxnmyAlgnmt>92.0</TaxnmyAlgnmt>
+      <SFDRArtcl>9</SFDRArtcl>
+      <ERC8040Rtg>AA</ERC8040Rtg>
+      <CrbnIntnsty>40.0</CrbnIntnsty>
+      <ESGBrkdwn>
+        <EnvrnmntlScr>92.0</EnvrnmntlScr>
+        <SclScr>88.0</SclScr>
+        <GvrnncScr>85.0</GvrnncScr>
+        <TtlScr>88.33</TtlScr>
+      </ESGBrkdwn>
+      <TaxnmyObjctv>
+        <ClmtChngMtgtn>true</ClmtChngMtgtn>
+        <ClmtChngAdptn>false</ClmtChngAdptn>
+        <WtrMrnRsrcs>false</WtrMrnRsrcs>
+        <CrclrEcnmy>true</CrclrEcnmy>
+        <PlltnPrvntn>true</PlltnPrvntn>
+        <BdvrstyPrtctn>false</BdvrstyPrtctn>
+      </TaxnmyObjctv>
+    </ESGClssfctn>
+    <TradDtls>
+      <TradPty>
+        <BuySllInd>BUY</BuySllInd>
+        <Pty>
+          <Id>
+            <OrgId>
+              <LEI>213800WAVVOPS85N2205</LEI>
+              <Othr>
+                <Id>INVESTOR-001</Id>
+                <SchmeNm>
+                  <Cd>TXID</Cd>
+                </SchmeNm>
+              </Othr>
+            </OrgId>
+          </Id>
+          <Nm>Sustainable Investment Fund LP</Nm>
+        </Pty>
+      </TradPty>
+      <SttlmInstrn>
+        <SttlmMtd>
+          <Cd>INDA</Cd>
+        </SttlmMtd>
+        <SfkpgAcct>
+          <Id>
+            <Othr>
+              <Id>0x1234567890abcdef1234567890abcdef12345678</Id>
+              <SchmeNm>
+                <Cd>EADR</Cd>
+              </SchmeNm>
+            </Othr>
+          </Id>
+          <AcctNm>ERC8040 Custody Account</AcctNm>
+        </SfkpgAcct>
+      </SttlmInstrn>
+    </TradDtls>
+    <FinInstrmAttrbts>
+      <FinInstrmQty>
+        <Unit>1000000.00</Unit>
+      </FinInstrmQty>
+      <UnitPric>
+        <Tp>
+          <Cd>NAVL</Cd>
+        </Tp>
+        <Val>
+          <Amt Ccy="USD">100.50</Amt>
+        </Val>
+      </UnitPric>
+      <TtlAmt>
+        <Amt Ccy="USD">100500000.00</Amt>
+      </TtlAmt>
+    </FinInstrmAttrbts>
+    <SplmtryData>
+      <Envlp>
+        <ERC8040Data>
+          <BlckChnNtwrk>Ethereum</BlckChnNtwrk>
+          <TknCntrctAddr>0xabcdef1234567890abcdef1234567890abcdef12</TknCntrctAddr>
+          <TknStndrd>ERC-8040</TknStndrd>
+          <SmartCntrctVrsn>1.0.0</SmartCntrctVrsn>
+          <CmplncFrmwrk>
+            <SFDR>
+              <Artcl>9</Artcl>
+              <DsclsrRqrmnt>Principal Adverse Impact</DsclsrRqrmnt>
+            </SFDR>
+            <EUTaxnmy>
+              <AlgnmntPrcntg>92.0</AlgnmntPrcntg>
+              <DnSgnfcntHrm>true</DnSgnfcntHrm>
+            </EUTaxnmy>
+            <MiFIDII>
+              <SstntbltyPrfrncs>true</SstntbltyPrfrncs>
+            </MiFIDII>
+          </CmplncFrmwrk>
+          <ESGVrfctn>
+            <VrfdBy>Third-Party ESG Rating Agency</VrfdBy>
+            <VrfctnDt>2024-03-01</VrfctnDt>
+            <NxtRvwDt>2024-09-01</NxtRvwDt>
+          </ESGVrfctn>
+        </ERC8040Data>
+      </Envlp>
+    </SplmtryData>
+  </SctiesTradConf>
+</Document>
