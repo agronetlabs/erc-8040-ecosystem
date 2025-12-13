@@ -20,8 +20,8 @@ fn test_esg_scoring_workflow() {
 
 #[test]
 fn test_compliance_validation_workflow() {
-    use compliance::*;
     use chrono::Utc;
+    use compliance::*;
 
     // Create validator
     let mut validator = ComplianceValidator::new();
@@ -73,15 +73,10 @@ fn test_iso20022_bridge_workflow() {
     assert!(classification.taxonomy_alignment > 0.0);
 
     // Create SETR message
-    let instrument = FinancialInstrument::new("ERC8040 Token".to_string())
-        .with_isin("US1234567890".to_string());
+    let instrument =
+        FinancialInstrument::new("ERC8040 Token".to_string()).with_isin("US1234567890".to_string());
 
-    let setr = bridge.create_setr_with_esg(
-        instrument,
-        &esg_score,
-        100.0,
-        "2024-01-01".to_string(),
-    );
+    let setr = bridge.create_setr_with_esg(instrument, &esg_score, 100.0, "2024-01-01".to_string());
 
     assert!(setr.esg_classification.is_some());
 }
@@ -94,10 +89,7 @@ fn test_oracle_provider_workflow() {
     let oracle = MockOracleProvider::new();
 
     // Request ESG score
-    let request = OracleRequest::new(
-        OracleDataType::ESGScore,
-        "0x1234567890abcdef".to_string(),
-    );
+    let request = OracleRequest::new(OracleDataType::ESGScore, "0x1234567890abcdef".to_string());
 
     let response = oracle.request(request).unwrap();
 
@@ -117,10 +109,7 @@ fn test_full_workflow() {
 
     // 1. Get ESG score from oracle
     let oracle = MockOracleProvider::new();
-    let request = OracleRequest::new(
-        OracleDataType::ESGScore,
-        "0x1234567890abcdef".to_string(),
-    );
+    let request = OracleRequest::new(OracleDataType::ESGScore, "0x1234567890abcdef".to_string());
     let response = oracle.request(request).unwrap();
 
     let esg_score = match response.data {
@@ -151,12 +140,7 @@ fn test_full_workflow() {
     // 3. Create ISO 20022 message
     let bridge = ISO20022Bridge::new();
     let instrument = FinancialInstrument::new("ERC8040 Token".to_string());
-    let setr = bridge.create_setr_with_esg(
-        instrument,
-        &esg_score,
-        100.0,
-        "2024-01-01".to_string(),
-    );
+    let setr = bridge.create_setr_with_esg(instrument, &esg_score, 100.0, "2024-01-01".to_string());
 
     assert!(setr.esg_classification.is_some());
 }

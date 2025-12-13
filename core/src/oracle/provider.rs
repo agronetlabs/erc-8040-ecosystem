@@ -119,10 +119,8 @@ mod tests {
 
     #[test]
     fn test_oracle_request() {
-        let request = OracleRequest::new(
-            OracleDataType::ESGScore,
-            "0x1234567890abcdef".to_string(),
-        );
+        let request =
+            OracleRequest::new(OracleDataType::ESGScore, "0x1234567890abcdef".to_string());
 
         assert_eq!(request.data_type, OracleDataType::ESGScore);
         assert_eq!(request.entity_id, "0x1234567890abcdef");
@@ -131,10 +129,8 @@ mod tests {
     #[test]
     fn test_mock_oracle_provider() {
         let oracle = MockOracleProvider::new();
-        let request = OracleRequest::new(
-            OracleDataType::ESGScore,
-            "0x1234567890abcdef".to_string(),
-        );
+        let request =
+            OracleRequest::new(OracleDataType::ESGScore, "0x1234567890abcdef".to_string());
 
         let response = oracle.request(request).unwrap();
 
@@ -151,10 +147,8 @@ mod tests {
         let custom_score = ESGScore::new(95.0, 90.0, 85.0);
         let oracle = MockOracleProvider::new().with_esg_score(custom_score.clone());
 
-        let request = OracleRequest::new(
-            OracleDataType::ESGScore,
-            "0x1234567890abcdef".to_string(),
-        );
+        let request =
+            OracleRequest::new(OracleDataType::ESGScore, "0x1234567890abcdef".to_string());
 
         let response = oracle.request(request).unwrap();
 

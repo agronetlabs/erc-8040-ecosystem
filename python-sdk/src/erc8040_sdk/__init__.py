@@ -12,6 +12,11 @@ from erc8040_sdk.compliance import (
     Severity,
 )
 from erc8040_sdk.esg import ESGCategory, ESGRating, ESGScore, ESGScoring
+from erc8040_sdk.iso20022 import (
+    ESGClassification,
+    FinancialInstrument,
+    ISO20022Bridge,
+)
 
 __all__ = [
     "ESGCategory",
@@ -26,4 +31,7 @@ __all__ = [
     "Jurisdiction",
     "Severity",
     "RuleCategory",
+    "ISO20022Bridge",
+    "ESGClassification",
+    "FinancialInstrument",
 ]
