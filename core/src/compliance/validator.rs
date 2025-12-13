@@ -165,10 +165,7 @@ mod tests {
     #[test]
     fn test_compliance_status_as_str() {
         assert_eq!(ComplianceStatus::Compliant.as_str(), "Compliant");
-        assert_eq!(
-            ComplianceStatus::NonCompliant.as_str(),
-            "Non-Compliant"
-        );
+        assert_eq!(ComplianceStatus::NonCompliant.as_str(), "Non-Compliant");
     }
 
     #[test]

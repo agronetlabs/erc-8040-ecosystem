@@ -35,7 +35,10 @@ impl ESGRating {
 
     /// Check if this rating is investment grade (BBB or higher)
     pub fn is_investment_grade(&self) -> bool {
-        matches!(self, ESGRating::AAA | ESGRating::AA | ESGRating::A | ESGRating::BBB)
+        matches!(
+            self,
+            ESGRating::AAA | ESGRating::AA | ESGRating::A | ESGRating::BBB
+        )
     }
 
     pub fn as_str(&self) -> &'static str {

@@ -46,8 +46,8 @@ impl ISO20022Bridge {
     fn determine_sfdr_article(&self, esg_score: &ESGScore) -> u8 {
         match esg_score.rating {
             ESGRating::AAA | ESGRating::AA => 9, // Article 9: Sustainable investment
-            ESGRating::A | ESGRating::BBB => 8,   // Article 8: Promotes ESG
-            _ => 6,                               // Article 6: No sustainability objective
+            ESGRating::A | ESGRating::BBB => 8,  // Article 8: Promotes ESG
+            _ => 6,                              // Article 6: No sustainability objective
         }
     }
 
@@ -134,18 +134,11 @@ mod tests {
             .with_isin("US1234567890".to_string());
         let esg_score = ESGScore::new(85.0, 80.0, 75.0);
 
-        let setr = bridge.create_setr_with_esg(
-            instrument,
-            &esg_score,
-            100.0,
-            "2024-01-01".to_string(),
-        );
+        let setr =
+            bridge.create_setr_with_esg(instrument, &esg_score, 100.0, "2024-01-01".to_string());
 
         assert_eq!(setr.quantity, 100.0);
         assert!(setr.esg_classification.is_some());
-        assert_eq!(
-            setr.esg_classification.unwrap().erc8040_rating,
-            "A"
-        );
+        assert_eq!(setr.esg_classification.unwrap().erc8040_rating, "A");
     }
 }
