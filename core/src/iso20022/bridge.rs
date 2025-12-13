@@ -45,8 +45,8 @@ impl ISO20022Bridge {
     /// Determine SFDR Article classification (6, 8, or 9)
     fn determine_sfdr_article(&self, esg_score: &ESGScore) -> u8 {
         match esg_score.rating {
-            ESGRating::AAA | ESGRating::AA => 9, // Article 9: Sustainable investment
-            ESGRating::A | ESGRating::BBB => 8,  // Article 8: Promotes ESG
+            ESGRating::AAA | ESGRating::AA | ESGRating::A => 9, // Article 9: Sustainable investment
+            ESGRating::BBB | ESGRating::BB => 8, // Article 8: Promotes ESG
             _ => 6,                              // Article 6: No sustainability objective
         }
     }

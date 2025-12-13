@@ -50,8 +50,8 @@ def map_sfdr_article(rating: ESGRating) -> int:
 ```rust
 fn determine_sfdr_article(rating: ESGRating) -> u8 {
     match rating {
-        ESGRating::AAA | ESGRating::AA => 9,
-        ESGRating::A | ESGRating::BBB => 8,
+        ESGRating::AAA | ESGRating::AA | ESGRating::A => 9,
+        ESGRating::BBB | ESGRating::BB => 8,
         _ => 6,
     }
 }
