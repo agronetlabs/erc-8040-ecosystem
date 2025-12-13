@@ -1,0 +1,19 @@
+[workspace]
+members = ["core"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["AgronetLabs"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/agronetlabs/erc-8040-ecosystem"
+description = "ERC-8040 Compliance Token Standard - ESG & Regulatory Compliance for DeFi"
+keywords = ["ethereum", "erc8040", "esg", "compliance", "defi"]
+
+[workspace.dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.0", features = ["v4", "serde"] }
