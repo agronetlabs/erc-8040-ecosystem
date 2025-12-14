@@ -18,6 +18,7 @@ contract MockUSDT is ERC20 {
     
     /**
      * @notice Faucet for testing - mint tokens to any address
+     * @dev Intentionally public and unrestricted for testnet use
      * @param to Recipient address
      * @param amount Amount to mint
      */
