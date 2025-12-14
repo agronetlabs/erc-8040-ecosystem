@@ -51,3 +51,11 @@ htmlcov/
 env/
 venv/
 ENV/
+
+# Foundry / Solidity
+contracts/cache/
+contracts/out/
+contracts/broadcast/
+contracts/lib/
+*.env
+!contracts/.env.example
