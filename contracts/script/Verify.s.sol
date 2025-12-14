@@ -27,9 +27,13 @@ contract Verify is Script {
         console.log("ERC8040:", token);
         console.log("ERC8040Factory:", factory);
         console.log("\nRun the following commands to verify:");
-        console.log("\nforge verify-contract", registry, "src/ESGRegistry.sol:ESGRegistry --chain-id", block.chainid);
+        console.log("\n# ESGRegistry (no constructor args)");
+        console.log("forge verify-contract", registry, "src/ESGRegistry.sol:ESGRegistry --chain-id", block.chainid);
+        console.log("\n# ESGOracle (constructor: address _registry)");
         console.log("forge verify-contract", oracle, "src/ESGOracle.sol:ESGOracle --chain-id", block.chainid, "--constructor-args $(cast abi-encode 'constructor(address)' ", registry, ")");
-        console.log("forge verify-contract", token, "src/ERC8040.sol:ERC8040 --chain-id", block.chainid);
-        console.log("forge verify-contract", factory, "src/ERC8040Factory.sol:ERC8040Factory --chain-id", block.chainid);
+        console.log("\n# ERC8040 (constructor: string name, string symbol, address _oracle)");
+        console.log("forge verify-contract", token, "src/ERC8040.sol:ERC8040 --chain-id", block.chainid, "--constructor-args $(cast abi-encode 'constructor(string,string,address)' 'AgroNet ESG Token' 'AGRO' ", oracle, ")");
+        console.log("\n# ERC8040Factory (constructor: address _oracle)");
+        console.log("forge verify-contract", factory, "src/ERC8040Factory.sol:ERC8040Factory --chain-id", block.chainid, "--constructor-args $(cast abi-encode 'constructor(address)' ", oracle, ")");
     }
 }

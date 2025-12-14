@@ -141,6 +141,33 @@ make verify-sepolia CONTRACT_ADDRESS=0x... CONTRACT_PATH=src/ERC8040.sol:ERC8040
 make verify-base-sepolia CONTRACT_ADDRESS=0x... CONTRACT_PATH=src/ERC8040.sol:ERC8040
 ```
 
+### Individual Contract Verification with Constructor Args:
+
+```bash
+# ESGRegistry (no constructor args)
+forge verify-contract $REGISTRY_ADDRESS src/ESGRegistry.sol:ESGRegistry \
+  --chain sepolia \
+  --etherscan-api-key $ETHERSCAN_API_KEY
+
+# ESGOracle (requires registry address)
+forge verify-contract $ORACLE_ADDRESS src/ESGOracle.sol:ESGOracle \
+  --chain sepolia \
+  --etherscan-api-key $ETHERSCAN_API_KEY \
+  --constructor-args $(cast abi-encode "constructor(address)" $REGISTRY_ADDRESS)
+
+# ERC8040 Token (requires name, symbol, oracle)
+forge verify-contract $TOKEN_ADDRESS src/ERC8040.sol:ERC8040 \
+  --chain sepolia \
+  --etherscan-api-key $ETHERSCAN_API_KEY \
+  --constructor-args $(cast abi-encode "constructor(string,string,address)" "AgroNet ESG Token" "AGRO" $ORACLE_ADDRESS)
+
+# ERC8040Factory (requires oracle address)
+forge verify-contract $FACTORY_ADDRESS src/ERC8040Factory.sol:ERC8040Factory \
+  --chain sepolia \
+  --etherscan-api-key $ETHERSCAN_API_KEY \
+  --constructor-args $(cast abi-encode "constructor(address)" $ORACLE_ADDRESS)
+```
+
 ### Using the Verify Script:
 ```bash
 export REGISTRY_ADDRESS=0x...
