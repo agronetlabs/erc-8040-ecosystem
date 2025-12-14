@@ -31,7 +31,7 @@ contract ESGRegistry is Ownable {
     function registerProvider(address provider, string memory name) external onlyOwner {
         require(provider != address(0), "Invalid provider address");
         require(bytes(name).length > 0, "Provider name required");
-        require(!providers[provider].isActive, "Provider already registered");
+        require(providers[provider].registeredAt == 0, "Provider already registered");
 
         providers[provider] = Provider({
             name: name,

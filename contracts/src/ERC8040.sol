@@ -11,6 +11,8 @@ interface IESGOracle {
         view
         returns (uint8 environmental, uint8 social, uint8 governance, uint256 timestamp);
     
+    function getCompositeScore(address entity) external view returns (uint8);
+    
     function hasValidScore(address entity, uint256 maxAge) external view returns (bool);
 }
 
@@ -81,9 +83,9 @@ contract ERC8040 is ERC20, ERC20Burnable, Ownable {
         (uint8 env, uint8 soc, uint8 gov, uint256 timestamp) = oracle.getScore(to);
         require(timestamp > 0, "No ESG score found");
         
-        // Validate minimum score requirement
-        uint8 avgScore = uint8((uint16(env) + uint16(soc) + uint16(gov)) / 3);
-        require(avgScore >= minESGScore, "ESG score below minimum");
+        // Validate minimum score requirement using oracle's composite score
+        uint8 compositeScore = oracle.getCompositeScore(to);
+        require(compositeScore >= minESGScore, "ESG score below minimum");
 
         // Store ESG metadata
         uint256 tokenId = nextTokenId++;
