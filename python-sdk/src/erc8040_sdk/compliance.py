@@ -149,11 +149,21 @@ class ComplianceValidator:
         """
         self.rules.extend(rules)
 
-    def validate_esg(self, esg_score, at_time: datetime | None = None) -> list[ComplianceResult]:
+    def validate_esg(
+        self,
+        esg_score,
+        jurisdiction: Jurisdiction,
+        framework: RegulatoryFramework,
+        category: RuleCategory,
+        at_time: datetime | None = None,
+    ) -> list[ComplianceResult]:
         """Validate an ESG score against ESG-related rules.
 
         Args:
             esg_score: ESG score to validate (ESGScore object)
+            jurisdiction: Jurisdiction to validate against
+            framework: Regulatory framework to validate against
+            category: Rule category to validate against
             at_time: Time to check rules (defaults to now)
 
         Returns:
@@ -173,6 +183,20 @@ class ComplianceValidator:
                 )
                 continue
 
+            if (
+                not rule.applies_to(jurisdiction)
+                or rule.framework != framework
+                or rule.category != category
+            ):
+                results.append(
+                    ComplianceResult(
+                        rule_id=rule.id,
+                        status=ComplianceStatus.NOT_APPLICABLE,
+                        message="Rule not applicable for given filters",
+                    )
+                )
+                continue
+
             if rule.required_esg_rating is None:
                 results.append(
                     ComplianceResult(
@@ -186,7 +210,18 @@ class ComplianceValidator:
             # Import ESGRating here to avoid circular import
             from erc8040_sdk.esg import ESGRating
 
-            required_rating = ESGRating(rule.required_esg_rating)
+            try:
+                required_rating = ESGRating(rule.required_esg_rating)
+            except ValueError:
+                results.append(
+                    ComplianceResult(
+                        rule_id=rule.id,
+                        status=ComplianceStatus.NON_COMPLIANT,
+                        message="Invalid required ESG rating",
+                    )
+                )
+                continue
+
             rating_order = list(ESGRating)
 
             if rating_order.index(esg_score.rating) >= rating_order.index(required_rating):

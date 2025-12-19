@@ -69,7 +69,13 @@ impl ComplianceValidator {
     }
 
     /// Validate an ESG score against ESG-related rules
-    pub fn validate_esg(&self, esg_score: &ESGScore) -> Vec<ComplianceResult> {
+    pub fn validate_esg(
+        &self,
+        esg_score: &ESGScore,
+        jurisdiction: crate::compliance::rules::Jurisdiction,
+        framework: crate::compliance::rules::RegulatoryFramework,
+        category: crate::compliance::rules::RuleCategory,
+    ) -> Vec<ComplianceResult> {
         let now = Utc::now();
         let mut results = Vec::new();
 
@@ -83,15 +89,29 @@ impl ComplianceValidator {
                 continue;
             }
 
+            if !rule.applies_to(jurisdiction)
+                || rule.framework != framework
+                || rule.category != category
+            {
+                results.push(ComplianceResult::new(
+                    rule.id.clone(),
+                    ComplianceStatus::NotApplicable,
+                    "Rule not applicable for given filters".to_string(),
+                ));
+                continue;
+            }
+
             let status = if let Some(ref required_rating) = rule.required_esg_rating {
-                let required = match required_rating.as_str() {
-                    "AAA" => ESGRating::AAA,
-                    "AA" => ESGRating::AA,
-                    "A" => ESGRating::A,
-                    "BBB" => ESGRating::BBB,
-                    "BB" => ESGRating::BB,
-                    "B" => ESGRating::B,
-                    _ => ESGRating::D,
+                let required = match Self::parse_esg_rating(required_rating) {
+                    Some(rating) => rating,
+                    None => {
+                        results.push(ComplianceResult::new(
+                            rule.id.clone(),
+                            ComplianceStatus::NonCompliant,
+                            "Invalid required ESG rating".to_string(),
+                        ));
+                        continue;
+                    }
                 };
 
                 if esg_score.rating >= required {
@@ -122,8 +142,14 @@ impl ComplianceValidator {
     }
 
     /// Validate all rules
-    pub fn validate_all(&self, esg_score: &ESGScore) -> Vec<ComplianceResult> {
-        self.validate_esg(esg_score)
+    pub fn validate_all(
+        &self,
+        esg_score: &ESGScore,
+        jurisdiction: crate::compliance::rules::Jurisdiction,
+        framework: crate::compliance::rules::RegulatoryFramework,
+        category: crate::compliance::rules::RuleCategory,
+    ) -> Vec<ComplianceResult> {
+        self.validate_esg(esg_score, jurisdiction, framework, category)
     }
 
     /// Get overall compliance status
@@ -153,6 +179,22 @@ impl ComplianceValidator {
             ComplianceStatus::Compliant
         } else {
             ComplianceStatus::NotApplicable
+        }
+    }
+
+    fn parse_esg_rating(value: &str) -> Option<ESGRating> {
+        match value {
+            "AAA" => Some(ESGRating::AAA),
+            "AA" => Some(ESGRating::AA),
+            "A" => Some(ESGRating::A),
+            "BBB" => Some(ESGRating::BBB),
+            "BB" => Some(ESGRating::BB),
+            "B" => Some(ESGRating::B),
+            "CCC" => Some(ESGRating::CCC),
+            "CC" => Some(ESGRating::CC),
+            "C" => Some(ESGRating::C),
+            "D" => Some(ESGRating::D),
+            _ => None,
         }
     }
 }
@@ -187,7 +229,12 @@ mod tests {
         validator.add_rule(rule);
 
         let esg_score = ESGScore::new(85.0, 80.0, 75.0);
-        let results = validator.validate_esg(&esg_score);
+        let results = validator.validate_esg(
+            &esg_score,
+            Jurisdiction::EU,
+            RegulatoryFramework::EuSfdr,
+            RuleCategory::EsgDisclosure,
+        );
 
         assert_eq!(results.len(), 1);
         assert_eq!(results[0].status, ComplianceStatus::Compliant);
@@ -232,5 +279,35 @@ mod tests {
             validator.overall_status(&results_non_compliant),
             ComplianceStatus::NonCompliant
         );
+    }
+
+    #[test]
+    fn test_invalid_required_esg_rating() {
+        let mut validator = ComplianceValidator::new();
+
+        let rule = ComplianceRule {
+            id: "SFDR-INVALID".to_string(),
+            framework: RegulatoryFramework::EuSfdr,
+            jurisdiction: Jurisdiction::EU,
+            category: RuleCategory::EsgDisclosure,
+            severity: Severity::High,
+            description: "Invalid ESG rating".to_string(),
+            effective_from: Utc::now(),
+            effective_until: None,
+            required_esg_rating: Some("INVALID".to_string()),
+        };
+
+        validator.add_rule(rule);
+
+        let esg_score = ESGScore::new(85.0, 80.0, 75.0);
+        let results = validator.validate_esg(
+            &esg_score,
+            Jurisdiction::EU,
+            RegulatoryFramework::EuSfdr,
+            RuleCategory::EsgDisclosure,
+        );
+
+        assert_eq!(results.len(), 1);
+        assert_eq!(results[0].status, ComplianceStatus::NonCompliant);
     }
 }

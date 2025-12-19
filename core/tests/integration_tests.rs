@@ -45,7 +45,12 @@ fn test_compliance_validation_workflow() {
     let esg_score = esg::ESGScore::new(85.0, 80.0, 75.0);
 
     // Validate
-    let results = validator.validate_esg(&esg_score);
+    let results = validator.validate_esg(
+        &esg_score,
+        Jurisdiction::EU,
+        RegulatoryFramework::EuSfdr,
+        RuleCategory::EsgDisclosure,
+    );
 
     assert_eq!(results.len(), 1);
     assert_eq!(results[0].status, ComplianceStatus::Compliant);
@@ -132,7 +137,12 @@ fn test_full_workflow() {
     };
     validator.add_rule(rule);
 
-    let results = validator.validate_all(&esg_score);
+    let results = validator.validate_all(
+        &esg_score,
+        Jurisdiction::EU,
+        RegulatoryFramework::EuSfdr,
+        RuleCategory::EsgDisclosure,
+    );
     let overall = validator.overall_status(&results);
 
     assert_eq!(overall, ComplianceStatus::Compliant);

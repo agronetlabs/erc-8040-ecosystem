@@ -50,6 +50,8 @@ weighted_score = scoring.calculate(80.0, 70.0, 90.0)
 print(f"Weighted Total: {weighted_score.total}")
 ```
 
+Note: ESG weights must be non-negative and sum to > 0. Invalid weights raise `ValueError`.
+
 ### Compliance Validation
 
 ```python
@@ -83,7 +85,12 @@ validator.add_rule(rule)
 
 # Validate an ESG score
 esg_score = ESGScore.create(85.0, 80.0, 75.0)
-results = validator.validate_esg(esg_score)
+results = validator.validate_esg(
+    esg_score,
+    Jurisdiction.EU,
+    RegulatoryFramework.EU_SFDR,
+    RuleCategory.ESG_DISCLOSURE,
+)
 
 for result in results:
     print(f"Rule: {result.rule_id}")

@@ -99,7 +99,13 @@ class ESGScoring:
             social_weight: Weight for social score (default: 1/3)
             governance_weight: Weight for governance score (default: 1/3)
         """
+        if environmental_weight < 0 or social_weight < 0 or governance_weight < 0:
+            raise ValueError("ESG weights must be non-negative")
+
         total = environmental_weight + social_weight + governance_weight
+        if total <= 0:
+            raise ValueError("ESG weights must sum to > 0")
+
         self.environmental_weight = environmental_weight / total
         self.social_weight = social_weight / total
         self.governance_weight = governance_weight / total

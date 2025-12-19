@@ -49,7 +49,7 @@ using namespace erc8040;
 
 int main() {
     // Calculate ESG Score
-    ESGScoring scorer(0.40, 0.30, 0.30);
+    ESGScoring scorer(0.40, 0.30, 0.30); // weights must be non-negative and sum > 0
     ESGScore score = scorer.calculate(85.0, 78.0, 92.0);
     
     std::cout << "Rating: " << ESGScoring::rating_to_string(score.rating) << "\n";
@@ -73,15 +73,15 @@ int main() {
 | Score | Rating | Investment Grade |
 |-------|--------|------------------|
 | 90-100 | AAA | ✅ Yes |
-| 80-89 | AA | ✅ Yes |
-| 70-79 | A | ✅ Yes |
-| 60-69 | BBB | ✅ Yes |
-| 50-59 | BB | ❌ No |
-| 40-49 | B | ❌ No |
-| 30-39 | CCC | ❌ No |
-| 20-29 | CC | ❌ No |
-| 10-19 | C | ❌ No |
-| 0-9 | D | ❌ No |
+| 85-89 | AA | ✅ Yes |
+| 80-84 | A | ✅ Yes |
+| 70-79 | BBB | ✅ Yes |
+| 60-69 | BB | ❌ No |
+| 50-59 | B | ❌ No |
+| 40-49 | CCC | ❌ No |
+| 30-39 | CC | ❌ No |
+| 20-29 | C | ❌ No |
+| 0-19 | D | ❌ No |
 
 ## 📄 License
 

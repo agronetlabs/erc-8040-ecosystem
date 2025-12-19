@@ -72,8 +72,17 @@ xml_message = bridge.create_setr_message(instrument, classification)
 - 🗺️ [ISO 20022 Field Mapping](./integration/swift-bridge/iso20022-mapping.md)
 - 📝 [Example SETR Message](./integration/swift-bridge/examples/setr010.xml)
 
----
-
 ## Overview
 
-ERC-8040 is a comprehensive compliance token standard combining ESG (Environmental, Social, Governance) scoring with DeFi capabilities.
+This repository provides a core Rust library and SDKs for ESG scoring, regulatory
+compliance validation, and ISO 20022 integration.
+
+## Structure
+
+- `core/`: Rust core library (ESG, compliance, ISO 20022, oracle)
+- `python-sdk/`: Python SDK built on Pydantic
+- `cpp-sdk/`: C++17 SDK for high-performance environments
+
+## Notes
+
+- ESG weights are validated: non-negative and sum > 0.

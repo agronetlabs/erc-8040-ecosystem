@@ -50,3 +50,14 @@ def test_esg_score_is_investment_grade():
 
     low_score = ESGScore.create(60.0, 55.0, 50.0)
     assert not low_score.is_investment_grade()
+
+
+def test_esg_scoring_invalid_weights():
+    """Test ESG scoring validation for invalid weights."""
+    import pytest
+
+    with pytest.raises(ValueError):
+        ESGScoring(environmental_weight=-1.0, social_weight=1.0, governance_weight=1.0)
+
+    with pytest.raises(ValueError):
+        ESGScoring(environmental_weight=0.0, social_weight=0.0, governance_weight=0.0)

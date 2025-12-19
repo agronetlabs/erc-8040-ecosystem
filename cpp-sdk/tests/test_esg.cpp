@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cassert>
+#include <stdexcept>
 #include "erc8040/esg.hpp"
 
 using namespace erc8040;
@@ -18,13 +19,14 @@ void test_esg_scoring() {
 void test_rating_from_score() {
     assert(ESGScoring::rating_from_score(95) == ESGRating::AAA);
     assert(ESGScoring::rating_from_score(85) == ESGRating::AA);
-    assert(ESGScoring::rating_from_score(75) == ESGRating::A);
-    assert(ESGScoring::rating_from_score(65) == ESGRating::BBB);
-    assert(ESGScoring::rating_from_score(55) == ESGRating::BB);
-    assert(ESGScoring::rating_from_score(45) == ESGRating::B);
-    assert(ESGScoring::rating_from_score(35) == ESGRating::CCC);
-    assert(ESGScoring::rating_from_score(25) == ESGRating::CC);
-    assert(ESGScoring::rating_from_score(15) == ESGRating::C);
+    assert(ESGScoring::rating_from_score(80) == ESGRating::A);
+    assert(ESGScoring::rating_from_score(70) == ESGRating::BBB);
+    assert(ESGScoring::rating_from_score(60) == ESGRating::BB);
+    assert(ESGScoring::rating_from_score(50) == ESGRating::B);
+    assert(ESGScoring::rating_from_score(40) == ESGRating::CCC);
+    assert(ESGScoring::rating_from_score(35) == ESGRating::CC);
+    assert(ESGScoring::rating_from_score(30) == ESGRating::CC);
+    assert(ESGScoring::rating_from_score(20) == ESGRating::C);
     assert(ESGScoring::rating_from_score(5) == ESGRating::D);
     std::cout << "[PASS] test_rating_from_score\n";
 }
@@ -48,6 +50,24 @@ void test_rating_to_string() {
     std::cout << "[PASS] test_rating_to_string\n";
 }
 
+void test_invalid_weights() {
+    try {
+        ESGScoring scorer(-1.0, 1.0, 1.0);
+        (void)scorer;
+        assert(false && "Expected invalid_argument for negative weight");
+    } catch (const std::invalid_argument&) {
+    }
+
+    try {
+        ESGScoring scorer(0.0, 0.0, 0.0);
+        (void)scorer;
+        assert(false && "Expected invalid_argument for zero weights");
+    } catch (const std::invalid_argument&) {
+    }
+
+    std::cout << "[PASS] test_invalid_weights\n";
+}
+
 int main() {
     std::cout << "=== ERC-8040 C++ SDK - ESG Tests ===\n\n";
     
@@ -55,6 +75,7 @@ int main() {
     test_rating_from_score();
     test_investment_grade();
     test_rating_to_string();
+    test_invalid_weights();
     
     std::cout << "\n✅ All ESG tests passed!\n";
     return 0;

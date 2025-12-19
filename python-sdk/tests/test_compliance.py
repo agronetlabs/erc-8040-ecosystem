@@ -111,7 +111,12 @@ def test_compliance_validator_validate_esg():
     validator.add_rule(rule)
 
     esg_score = ESGScore.create(85.0, 80.0, 75.0)
-    results = validator.validate_esg(esg_score)
+    results = validator.validate_esg(
+        esg_score,
+        Jurisdiction.EU,
+        RegulatoryFramework.EU_SFDR,
+        RuleCategory.ESG_DISCLOSURE,
+    )
 
     assert len(results) == 1
     assert results[0].status == ComplianceStatus.COMPLIANT
@@ -152,3 +157,31 @@ def test_compliance_validator_overall_status():
     ]
 
     assert validator.overall_status(results_non_compliant) == ComplianceStatus.NON_COMPLIANT
+
+
+def test_compliance_validator_invalid_required_rating():
+    """Test invalid required ESG rating handling."""
+    validator = ComplianceValidator()
+    rule = ComplianceRule(
+        id="SFDR-INVALID",
+        framework=RegulatoryFramework.EU_SFDR,
+        jurisdiction=Jurisdiction.EU,
+        category=RuleCategory.ESG_DISCLOSURE,
+        severity=Severity.HIGH,
+        description="Invalid ESG rating",
+        effective_from=datetime.now(),
+        required_esg_rating="INVALID",
+    )
+
+    validator.add_rule(rule)
+
+    esg_score = ESGScore.create(85.0, 80.0, 75.0)
+    results = validator.validate_esg(
+        esg_score,
+        Jurisdiction.EU,
+        RegulatoryFramework.EU_SFDR,
+        RuleCategory.ESG_DISCLOSURE,
+    )
+
+    assert len(results) == 1
+    assert results[0].status == ComplianceStatus.NON_COMPLIANT

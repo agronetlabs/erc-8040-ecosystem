@@ -117,12 +117,30 @@ impl ESGScoring {
         social_weight: f64,
         governance_weight: f64,
     ) -> Self {
+        Self::try_with_weights(environmental_weight, social_weight, governance_weight)
+            .expect("ESG weights must be non-negative and sum to > 0")
+    }
+
+    /// Create a custom ESG scoring calculator with validation
+    pub fn try_with_weights(
+        environmental_weight: f64,
+        social_weight: f64,
+        governance_weight: f64,
+    ) -> Result<Self, String> {
+        if environmental_weight < 0.0 || social_weight < 0.0 || governance_weight < 0.0 {
+            return Err("ESG weights must be non-negative".to_string());
+        }
+
         let total = environmental_weight + social_weight + governance_weight;
-        Self {
+        if total <= 0.0 {
+            return Err("ESG weights must sum to > 0".to_string());
+        }
+
+        Ok(Self {
             environmental_weight: environmental_weight / total,
             social_weight: social_weight / total,
             governance_weight: governance_weight / total,
-        }
+        })
     }
 
     /// Calculate ESG score from individual component scores
@@ -187,5 +205,11 @@ mod tests {
         let score = scoring.calculate(80.0, 60.0, 60.0);
         // (80*0.5 + 60*0.25 + 60*0.25) = 70
         assert!((score.total - 70.0).abs() < 0.01);
+    }
+
+    #[test]
+    fn test_esg_scoring_try_with_weights_invalid() {
+        assert!(ESGScoring::try_with_weights(-1.0, 1.0, 1.0).is_err());
+        assert!(ESGScoring::try_with_weights(0.0, 0.0, 0.0).is_err());
     }
 }
