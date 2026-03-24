@@ -11,6 +11,11 @@
 ![Deployed](https://img.shields.io/badge/deployed-Cloudflare-orange)
 ![Deployed](https://img.shields.io/badge/deployed-OpenAI-black)
 
+> 🏛️ **This repository is an official ATF-AI Adapter.**
+> The canonical governance framework, specifications, and documentation now live at
+> **[agronetlabs/ATF-AI](https://github.com/agronetlabs/ATF-AI)**.
+> This repository implements the ATF-AI trust model on Ethereum-compatible networks.
+
 # erc-8040-ecosystem
 
 ERC-8040 Compliance Token Standard - ESG & DeFi
@@ -21,12 +26,22 @@ This repository is an **official ATF-AI adapter** for blockchain-based ESG compl
 
 > ATF-AI (Autonomous Trust Framework) is the parent governance framework that provides verifiable provenance, deterministic validation, and zero-trust agent coordination — for any infrastructure.
 
-| Role | Repository |
-|------|-----------|
-| 🧠 **Governance Framework** | [agronetlabs/ATF-AI](https://github.com/agronetlabs/ATF-AI) |
-| 🔗 **Blockchain/ESG Adapter** | This repository (erc-8040-ecosystem) |
+| Role | Repository | Description |
+|------|-----------|-------------|
+| 🧠 **Parent Framework** | <a href="https://github.com/agronetlabs/ATF-AI">agronetlabs/ATF-AI</a> | Governance, provenance specs, zero-trust model |
+| 🔗 **Blockchain Adapter** | This repository | ERC-8040 implementation on EVM networks |
+| 📋 **Adapter Spec** | <a href="https://github.com/agronetlabs/ATF-AI/blob/main/specs/adapters/erc8040.md">ATF-AI/specs/adapters/erc8040.md</a> | Formal adapter specification |
 
 The ERC-8040 standard implements the ATF-AI trust model on Ethereum-compatible networks, enabling ESG-scored tokens to carry cryptographic provenance and governance attestations defined by the ATF-AI protocol.
+
+## 📚 Canonical Documentation
+
+The full technical documentation for this adapter is maintained in the ATF-AI repository:
+
+- 🏗️ [Blockchain Integration Overview](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/overview.md)
+- 🔧 [Adapter Architecture](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/architecture.md)
+- 🌉 [SWIFT/ISO 20022 Bridge](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/swift-bridge.md)
+- 📋 [ERC-8040 Adapter Spec](https://github.com/agronetlabs/ATF-AI/blob/main/specs/adapters/erc8040.md)
 
 ## 🏦 ISO 20022 SWIFT Integration
 
