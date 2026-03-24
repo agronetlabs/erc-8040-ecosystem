@@ -1,8 +1,18 @@
 # ERC-8040 as an ATF-AI Adapter
 
+**Status: PRODUCTION-READY ADAPTER**
+
 ## Overview
 
 The `erc-8040-ecosystem` is an **official ATF-AI adapter** — a concrete implementation of the [ATF-AI Autonomous Trust Framework](https://github.com/agronetlabs/ATF-AI) for Ethereum-compatible blockchain networks.
+
+## 📚 Canonical Documentation
+
+The full technical documentation for this adapter is maintained in the ATF-AI repository:
+
+- 🏗️ [Blockchain Integration Overview](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/overview.md)
+- 🔧 [Adapter Architecture](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/architecture.md)
+- 📋 [ERC-8040 Adapter Spec](https://github.com/agronetlabs/ATF-AI/blob/main/specs/adapters/erc8040.md)
 
 ## What ATF-AI Provides
 
@@ -12,6 +22,9 @@ The `erc-8040-ecosystem` is an **official ATF-AI adapter** — a concrete implem
 | **Deterministic Governance** | Oracle-based ESG score validation (ESGOracle.sol) |
 | **Zero-Trust Validation** | Registry-controlled provider authorization (ESGRegistry.sol) |
 | **Agent Coordination** | Multi-SDK support (Rust, Python, C++) for interoperable agents |
+| **Attestation Model** | On-chain attestation via ESGRegistry provider registration |
+| **Governance Layer** | ERC8040Factory contract with role-based access control |
+| **Compliance Enforcement** | ISO 20022 / SWIFT bridge for regulatory reporting |
 
 ## Relationship Model
 
