@@ -11,6 +11,10 @@
 ![Deployed](https://img.shields.io/badge/deployed-Cloudflare-orange)
 ![Deployed](https://img.shields.io/badge/deployed-OpenAI-black)
 
+> ⚠️ **NOTICE: This repository is an official ATF-AI Adapter.**
+> The canonical governance framework, full documentation, and specifications live at **[agronetlabs/ATF-AI](https://github.com/agronetlabs/ATF-AI)**.
+> This repository implements the ATF-AI trust model for Ethereum-compatible blockchain/ESG workflows.
+
 # erc-8040-ecosystem
 
 ERC-8040 Compliance Token Standard - ESG & DeFi
@@ -25,6 +29,12 @@ This repository is an **official ATF-AI adapter** for blockchain-based ESG compl
 |------|-----------|
 | 🧠 **Governance Framework** | [agronetlabs/ATF-AI](https://github.com/agronetlabs/ATF-AI) |
 | 🔗 **Blockchain/ESG Adapter** | This repository (erc-8040-ecosystem) |
+
+### ATF-AI Integration Docs
+- 📐 [Adapter Specification](https://github.com/agronetlabs/ATF-AI/blob/main/specs/adapters/erc8040.md)
+- 🏗️ [Blockchain Integration Overview](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/overview.md)
+- ⚙️ [Architecture Details](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/architecture.md)
+- 🌉 [SWIFT/ISO 20022 Bridge](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/swift-bridge.md)
 
 The ERC-8040 standard implements the ATF-AI trust model on Ethereum-compatible networks, enabling ESG-scored tokens to carry cryptographic provenance and governance attestations defined by the ATF-AI protocol.
 
