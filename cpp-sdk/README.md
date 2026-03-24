@@ -83,6 +83,11 @@ int main() {
 | 20-29 | C | ❌ No |
 | 0-19 | D | ❌ No |
 
+## 🏛️ ATF-AI Compliance
+
+This SDK is part of the ERC-8040 ecosystem, an official ATF-AI adapter.  
+Trust model, provenance standards, and governance rules are defined by the [ATF-AI framework](https://github.com/agronetlabs/ATF-AI).
+
 ## 📄 License
 
 MIT License - Part of the ERC-8040 Ecosystem

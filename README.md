@@ -1,7 +1,7 @@
 [![ISO 20022 Compatible](https://img.shields.io/badge/ISO%2020022-Compatible-00a651?style=for-the-badge&logo=swift&logoColor=white)](https://www.iso20022.org/)
 [![SWIFT Ready](https://img.shields.io/badge/SWIFT-Ready-ff6600?style=for-the-badge&logo=swift&logoColor=white)](https://www.swift.com/)
-[![ATF-AI Verified](https://img.shields.io/badge/ATF--AI-VERIFIED-2ea44f?style=for-the-badge&logo=vercel)](https://github.com/agronetlabs/atf-ai)
-[![Provenance Traceable](https://img.shields.io/badge/PROVENANCE-SIGNED-0f9d58?style=for-the-badge&logo=oci)](https://github.com/agronetlabs/atf-ai)
+[![ATF-AI Adapter](https://img.shields.io/badge/ATF--AI-ADAPTER-2ea44f?style=for-the-badge&logo=vercel)](https://github.com/agronetlabs/ATF-AI)
+[![Provenance Traceable](https://img.shields.io/badge/PROVENANCE-SIGNED-0f9d58?style=for-the-badge&logo=oci)](https://github.com/agronetlabs/ATF-AI)
 [![Copilot](https://img.shields.io/badge/GitHub%20Copilot-Active-0066ff?style=for-the-badge&logo=githubcopilot)](https://github.com/features/copilot)
 [![OpenAI Codex](https://img.shields.io/badge/OpenAI%20Codex-Active-ff6600?style=for-the-badge&logo=openai&logoColor=white)](https://github.com/features/copilot)
 
@@ -14,6 +14,19 @@
 # erc-8040-ecosystem
 
 ERC-8040 Compliance Token Standard - ESG & DeFi
+
+## 🏛️ Built on ATF-AI
+
+This repository is an **official ATF-AI adapter** for blockchain-based ESG compliance.
+
+> ATF-AI (Autonomous Trust Framework) is the parent governance framework that provides verifiable provenance, deterministic validation, and zero-trust agent coordination — for any infrastructure.
+
+| Role | Repository |
+|------|-----------|
+| 🧠 **Governance Framework** | [agronetlabs/ATF-AI](https://github.com/agronetlabs/ATF-AI) |
+| 🔗 **Blockchain/ESG Adapter** | This repository (erc-8040-ecosystem) |
+
+The ERC-8040 standard implements the ATF-AI trust model on Ethereum-compatible networks, enabling ESG-scored tokens to carry cryptographic provenance and governance attestations defined by the ATF-AI protocol.
 
 ## 🏦 ISO 20022 SWIFT Integration
 
@@ -74,7 +87,7 @@ xml_message = bridge.create_setr_message(instrument, classification)
 
 ## Overview
 
-This repository provides a core Rust library and SDKs for ESG scoring, regulatory
+As an ATF-AI adapter, this ecosystem extends the Autonomous Trust Framework with blockchain-native ESG compliance capabilities. This repository provides a core Rust library and SDKs for ESG scoring, regulatory
 compliance validation, and ISO 20022 integration.
 
 ## Structure

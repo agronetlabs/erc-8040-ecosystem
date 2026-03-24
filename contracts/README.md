@@ -4,6 +4,8 @@ Solidity smart contracts for the ERC-8040 ESG Compliance Token Standard.
 
 ## 📋 Overview
 
+These contracts implement the ERC-8040 standard as an ATF-AI adapter — embedding verifiable provenance and governance attestations defined by the [ATF-AI framework](https://github.com/agronetlabs/ATF-AI).
+
 This directory contains the smart contracts, deployment scripts, and tests for the ERC-8040 ecosystem.
 
 ### Contracts
