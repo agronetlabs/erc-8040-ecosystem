@@ -1,4 +1,4 @@
-﻿[![AI Co-Pilot: OpenClaw](https://img.shields.io/badge/AI%20Co--Pilot-OpenClaw-FF4500?style=for-the-badge&logo=github)](https://openclaw.ai)
+[![AI Co-Pilot: OpenClaw](https://img.shields.io/badge/AI%20Co--Pilot-OpenClaw-FF4500?style=for-the-badge&logo=github)](https://openclaw.ai)
 [![ATF-AI Verified](https://img.shields.io/badge/ATF--AI-VERIFIED-2ea44f?style=for-the-badge)](https://github.com/agronetlabs/ATF-AI)
 [![ERC-8040](https://img.shields.io/badge/ERC--8040-Compliant-0066ff?style=for-the-badge)](https://github.com/agronetlabs/erc-8040-ecosystem)
 [![SWIFT ISO 20022](https://img.shields.io/badge/SWIFT-ISO%2020022-orange?style=for-the-badge)]()
@@ -18,7 +18,7 @@
 ![Deployed](https://img.shields.io/badge/deployed-Cloudflare-orange)
 ![Deployed](https://img.shields.io/badge/deployed-OpenAI-black)
 
-> ðŸ›ï¸ **This repository is an official ATF-AI Adapter.**
+>  **This repository is an official ATF-AI Adapter.**
 > The canonical governance framework, specifications, and documentation now live at
 > **[agronetlabs/ATF-AI](https://github.com/agronetlabs/ATF-AI)**.
 > This repository implements the ATF-AI trust model on Ethereum-compatible networks.
@@ -27,54 +27,54 @@
 
 ERC-8040 Compliance Token Standard - ESG & DeFi
 
-## ðŸ›ï¸ Built on ATF-AI
+##  Built on ATF-AI
 
 This repository is an **official ATF-AI adapter** for blockchain-based ESG compliance.
 
-> ATF-AI (Autonomous Trust Framework) is the parent governance framework that provides verifiable provenance, deterministic validation, and zero-trust agent coordination â€” for any infrastructure.
+> ATF-AI (Autonomous Trust Framework) is the parent governance framework that provides verifiable provenance, deterministic validation, and zero-trust agent coordination  for any infrastructure.
 
 | Role | Repository | Description |
 |------|-----------|-------------|
-| ðŸ§  **Parent Framework** | <a href="https://github.com/agronetlabs/ATF-AI">agronetlabs/ATF-AI</a> | Governance, provenance specs, zero-trust model |
-| ðŸ”— **Blockchain Adapter** | This repository | ERC-8040 implementation on EVM networks |
-| ðŸ“‹ **Adapter Spec** | <a href="https://github.com/agronetlabs/ATF-AI/blob/main/specs/adapters/erc8040.md">ATF-AI/specs/adapters/erc8040.md</a> | Formal adapter specification |
+|  **Parent Framework** | <a href="https://github.com/agronetlabs/ATF-AI">agronetlabs/ATF-AI</a> | Governance, provenance specs, zero-trust model |
+|  **Blockchain Adapter** | This repository | ERC-8040 implementation on EVM networks |
+|  **Adapter Spec** | <a href="https://github.com/agronetlabs/ATF-AI/blob/main/specs/adapters/erc8040.md">ATF-AI/specs/adapters/erc8040.md</a> | Formal adapter specification |
 
 The ERC-8040 standard implements the ATF-AI trust model on Ethereum-compatible networks, enabling ESG-scored tokens to carry cryptographic provenance and governance attestations defined by the ATF-AI protocol.
 
-## ðŸ“š Canonical Documentation
+##  Canonical Documentation
 
 The full technical documentation for this adapter is maintained in the ATF-AI repository:
 
-- ðŸ—ï¸ [Blockchain Integration Overview](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/overview.md)
-- ðŸ”§ [Adapter Architecture](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/architecture.md)
-- ðŸŒ‰ [SWIFT/ISO 20022 Bridge](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/swift-bridge.md)
-- ðŸ“‹ [ERC-8040 Adapter Spec](https://github.com/agronetlabs/ATF-AI/blob/main/specs/adapters/erc8040.md)
+-  [Blockchain Integration Overview](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/overview.md)
+-  [Adapter Architecture](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/architecture.md)
+-  [SWIFT/ISO 20022 Bridge](https://github.com/agronetlabs/ATF-AI/blob/main/docs/integrations/blockchain/swift-bridge.md)
+-  [ERC-8040 Adapter Spec](https://github.com/agronetlabs/ATF-AI/blob/main/specs/adapters/erc8040.md)
 
-## ðŸ¦ ISO 20022 SWIFT Integration
+##  ISO 20022 SWIFT Integration
 
 **ERC-8040 is the FIRST ESG token standard with native SWIFT ISO 20022 support**, enabling seamless integration between blockchain-based ESG compliance tokens and traditional financial infrastructure.
 
 ### Key Features
 
-- âœ… **Native ISO 20022 support** for securities trading messages (SETR)
-- âœ… **SFDR compliance mapping** (Articles 6, 8, 9) for EU regulatory requirements
-- âœ… **EU Taxonomy alignment** calculation and reporting
-- âœ… **Carbon intensity estimation** based on environmental scores
-- âœ… **Multi-language SDK support**: Python, Rust, C++
+-  **Native ISO 20022 support** for securities trading messages (SETR)
+-  **SFDR compliance mapping** (Articles 6, 8, 9) for EU regulatory requirements
+-  **EU Taxonomy alignment** calculation and reporting
+-  **Carbon intensity estimation** based on environmental scores
+-  **Multi-language SDK support**: Python, Rust, C++
 
 ### Architecture Overview
 
 ```
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”      â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  ERC-8040 Token â”‚â”€â”€â”€â”€â”€â–ºâ”‚  ISO 20022       â”‚â”€â”€â”€â”€â”€â–ºâ”‚  SWIFT Network  â”‚
-â”‚  ESG Scores     â”‚      â”‚  Bridge          â”‚      â”‚  Financial Inst â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜      â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+            
+  ERC-8040 Token   ISO 20022         SWIFT Network  
+  ESG Scores             Bridge                  Financial Inst 
+            
      Blockchain              Transformation           Traditional Finance
 ```
 
 The ISO 20022 bridge automatically:
 1. **Converts ESG scores** to ISO 20022 classifications
-2. **Maps ratings to SFDR articles** (AAA/AA/A â†’ 9, BBB/BB â†’ 8, others â†’ 6)
+2. **Maps ratings to SFDR articles** (AAA/AA/A  9, BBB/BB  8, others  6)
 3. **Calculates EU Taxonomy alignment** from environmental scores
 4. **Generates compliant SETR messages** with embedded ESG metadata
 
@@ -101,11 +101,11 @@ xml_message = bridge.create_setr_message(instrument, classification)
 
 ### Documentation
 
-- ðŸ“– [Integration Overview](./integration/README.md)
-- ðŸ—ï¸ [Architecture Details](./integration/architecture.md)
-- ðŸŒ‰ [SWIFT Bridge Guide](./integration/swift-bridge/README.md)
-- ðŸ—ºï¸ [ISO 20022 Field Mapping](./integration/swift-bridge/iso20022-mapping.md)
-- ðŸ“ [Example SETR Message](./integration/swift-bridge/examples/setr010.xml)
+-  [Integration Overview](./integration/README.md)
+-  [Architecture Details](./integration/architecture.md)
+-  [SWIFT Bridge Guide](./integration/swift-bridge/README.md)
+-  [ISO 20022 Field Mapping](./integration/swift-bridge/iso20022-mapping.md)
+-  [Example SETR Message](./integration/swift-bridge/examples/setr010.xml)
 
 ## Overview
 
