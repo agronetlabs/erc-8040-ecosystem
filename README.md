@@ -31,7 +31,7 @@ ERC-8040 Compliance Token Standard - ESG & DeFi
 
 This repository is an **official ATF-AI adapter** for blockchain-based ESG compliance.
 
-> ATF-AI (Autonomous Trust Framework) is the parent governance framework that provides verifiable provenance, deterministic validation, and zero-trust agent coordination  for any infrastructure.
+> ATF-AI (Autonomous Trust Framework for Artificial Intelligence) is the parent governance framework that provides verifiable provenance, deterministic validation, and zero-trust agent coordination for any infrastructure.
 
 | Role | Repository | Description |
 |------|-----------|-------------|
@@ -109,7 +109,7 @@ xml_message = bridge.create_setr_message(instrument, classification)
 
 ## Overview
 
-As an ATF-AI adapter, this ecosystem extends the Autonomous Trust Framework with blockchain-native ESG compliance capabilities. This repository provides a core Rust library and SDKs for ESG scoring, regulatory
+As an ATF-AI adapter, this ecosystem extends the Autonomous Trust Framework for Artificial Intelligence with blockchain-native ESG compliance capabilities. This repository provides a core Rust library and SDKs for ESG scoring, regulatory
 compliance validation, and ISO 20022 integration.
 
 ## Structure

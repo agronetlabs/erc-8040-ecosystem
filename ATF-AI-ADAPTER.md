@@ -4,7 +4,7 @@
 
 ## Overview
 
-The `erc-8040-ecosystem` is an **official ATF-AI adapter** — a concrete implementation of the [ATF-AI Autonomous Trust Framework](https://github.com/agronetlabs/ATF-AI) for Ethereum-compatible blockchain networks.
+The `erc-8040-ecosystem` is an **official ATF-AI adapter** — a concrete implementation of the [Autonomous Trust Framework for Artificial Intelligence](https://github.com/agronetlabs/ATF-AI) for Ethereum-compatible blockchain networks.
 
 ## 📚 Canonical Documentation
 
